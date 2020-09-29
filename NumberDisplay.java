@@ -35,6 +35,11 @@ public class NumberDisplay
         return value;
     }
 
+    public boolean getIsMorning()
+    {
+        return isMorning;
+    }
+    
     /**
      * Return the display value (that is, the current value as a two-digit
      * String. If the value is less than ten, it will be padded with a leading

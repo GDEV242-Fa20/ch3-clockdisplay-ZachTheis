@@ -16,7 +16,7 @@ public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
-    private boolean isMorning;
+    //private boolean isMorning;
     private String displayString;    // simulates the actual display
     
     /**
@@ -82,7 +82,23 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+        if(hours.getIsMorning())
+        {
+            if(hours.getDisplayValue == 0)
+            {
+                displayString = "12:" + minutes.getDisplayValue() + " AM";
+            }
+            else
+            {
+                displayString = hours.getDisplayValue() + ":" + 
+                                minutes.getDisplayValue() + " AM";
+            }
+        }
+        else
+        {
+            displayString = hours.getDisplayValue() + ":" + 
+                        minutes.getDisplayValue() + " PM"; 
+        }
+        
     }
 }
