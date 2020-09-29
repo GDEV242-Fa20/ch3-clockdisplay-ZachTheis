@@ -83,7 +83,7 @@ public class ClockDisplay
     /**
      * Return the current time of this display in the format HH:MM.
      */
-    public String getTime()
+    public String get12HourInternalDisplay()
     {
         return displayString;
     }
