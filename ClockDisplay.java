@@ -9,13 +9,14 @@
  * and reacts by incrementing the display. This is done in the usual clock
  * fashion: the hour increments when the minutes roll over to zero.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author Zach Theis
+ * @version 2029.09.28
  */
 public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
+    private boolean isMorning;
     private String displayString;    // simulates the actual display
     
     /**
@@ -24,7 +25,7 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         updateDisplay();
     }
@@ -34,11 +35,11 @@ public class ClockDisplay
      * creates a new clock set at the time specified by the 
      * parameters.
      */
-    public ClockDisplay(int hour, int minute)
+    public ClockDisplay(int hour, int minute, boolean morning)
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
-        setTime(hour, minute);
+        setTime(hour, minute, morning);
     }
 
     /**
@@ -48,7 +49,8 @@ public class ClockDisplay
     public void timeTick()
     {
         minutes.increment();
-        if(minutes.getValue() == 0) {  // it just rolled over!
+        if(minutes.getValue() == 0) 
+        {  // it just rolled over!
             hours.increment();
         }
         updateDisplay();
@@ -58,10 +60,12 @@ public class ClockDisplay
      * Set the time of the display to the specified hour and
      * minute.
      */
-    public void setTime(int hour, int minute)
+    public void setTime(int hour, int minute, boolean morning)
     {
         hours.setValue(hour);
+        hours.setIsMorning(morning);
         minutes.setValue(minute);
+        minutes.setIsMorning(morning);
         updateDisplay();
     }
 

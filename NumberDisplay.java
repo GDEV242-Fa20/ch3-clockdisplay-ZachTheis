@@ -7,13 +7,14 @@
  * resulting in display values from 0 to 59. When incremented, the display 
  * automatically rolls over to zero when reaching the limit.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author Zach Theis
+ * @version 2022.09.28
  */
 public class NumberDisplay
 {
     private int limit;
     private int value;
+    private boolean isMorning;
 
     /**
      * Constructor for objects of class NumberDisplay.
@@ -23,6 +24,7 @@ public class NumberDisplay
     {
         this.limit = limit;
         value = 0;
+        isMorning = true;
     }
 
     /**
@@ -40,7 +42,8 @@ public class NumberDisplay
      */
     public String getDisplayValue()
     {
-        if(value < 10) {
+        if(value < 10) 
+        {
             return "0" + value;
         }
         else {
@@ -54,11 +57,17 @@ public class NumberDisplay
      */
     public void setValue(int replacementValue)
     {
-        if((replacementValue >= 0) && (replacementValue < limit)) {
+        if((replacementValue >= 0) && (replacementValue < limit)) 
+        {
             value = replacementValue;
         }
     }
 
+    public void setIsMorning(boolean morning)
+    {
+        isMorning = morning;
+    }
+    
     /**
      * Increment the display value by one, rolling over to zero if the
      * limit is reached.
