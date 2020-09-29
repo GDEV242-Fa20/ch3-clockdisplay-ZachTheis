@@ -16,7 +16,7 @@ public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
-    //private boolean isMorning;
+    private boolean isMorning;
     private String displayString;    // simulates the actual display
     
     /**
@@ -52,6 +52,17 @@ public class ClockDisplay
         if(minutes.getValue() == 0) 
         {  // it just rolled over!
             hours.increment();
+            if(hours.getValue() == 0)
+            {
+                if(isMorning)
+                {
+                    isMorning = false;
+                }
+                else
+                {
+                    isMorning = true;
+                }
+            }
         }
         updateDisplay();
     }
@@ -63,9 +74,10 @@ public class ClockDisplay
     public void setTime(int hour, int minute, boolean morning)
     {
         hours.setValue(hour);
-        hours.setIsMorning(morning);
+        //hours.setIsMorning(morning);
         minutes.setValue(minute);
-        minutes.setIsMorning(morning);
+        //minutes.setIsMorning(morning);
+        isMorning = morning;
         updateDisplay();
     }
 
@@ -82,9 +94,9 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        if(hours.getIsMorning())
+        if(isMorning)
         {
-            if(hours.getDisplayValue == 0)
+            if(hours.getDisplayValue() == "00")
             {
                 displayString = "12:" + minutes.getDisplayValue() + " AM";
             }
