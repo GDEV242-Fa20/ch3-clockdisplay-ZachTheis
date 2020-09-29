@@ -94,23 +94,30 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        if(isMorning)
+        
+        if(hours.getValue() == 0)
         {
-            if(hours.getDisplayValue() == "00")
+            if(isMorning)
             {
                 displayString = "12:" + minutes.getDisplayValue() + " AM";
             }
             else
             {
-                displayString = hours.getDisplayValue() + ":" + 
-                                minutes.getDisplayValue() + " AM";
+                displayString = "12:" + minutes.getDisplayValue() + " PM";
             }
         }
         else
         {
-            displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue() + " PM"; 
+            if(isMorning)
+            {
+                displayString = hours.getDisplayValue() + ":" + 
+                                minutes.getDisplayValue() + " AM";
+            }
+            else
+            {
+                displayString = hours.getDisplayValue() + ":" + 
+                                minutes.getDisplayValue() + " PM";
+            }
         }
-        
     }
 }
