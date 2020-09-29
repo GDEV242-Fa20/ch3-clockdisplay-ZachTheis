@@ -68,8 +68,40 @@ public class ClockDisplay
     /**
      * Return the current time of this display in the format HH:MM.
      */
-    public String getTime()
+    //public String getTime()
+    //{
+    //    return displayString;
+    //}
+    
+    /**
+     * Returns the current time of this display in the format HH:MM AM/PM
+     */
+    public String get24HourInternalDisplay()
     {
+        if(hours.getValue() == 0)
+        {
+            displayString = "12:" + minutes.getDisplayValue() + " AM";
+        }
+        else if(hours.getValue() < 12)
+        {
+            displayString = hours.getDisplayValue() + ":" +
+                            minutes.getDisplayValue() + " AM";
+        }        
+        else if(hours.getValue() == 12)
+        {
+            displayString = hours.getDisplayValue() + ":" +
+                            minutes.getDisplayValue() + " PM";
+        }
+        else if(hours.getValue() < 22)
+        {
+            String hourValue = "0" + (hours.getValue() - 12);
+            displayString = hourValue + ":" + minutes.getDisplayValue() + " PM";
+        }
+        else
+        {
+            String hourValue = "" + (hours.getValue() - 12);
+            displayString = hourValue + ":" + minutes.getDisplayValue() + " PM";
+        }
         return displayString;
     }
     
