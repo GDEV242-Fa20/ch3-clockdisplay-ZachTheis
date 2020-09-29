@@ -14,7 +14,6 @@ public class NumberDisplay
 {
     private int limit;
     private int value;
-    //private boolean isMorning;
 
     /**
      * Constructor for objects of class NumberDisplay.
@@ -24,7 +23,6 @@ public class NumberDisplay
     {
         this.limit = limit;
         value = 0;
-        //isMorning = true;
     }
 
     /**
@@ -34,11 +32,6 @@ public class NumberDisplay
     {
         return value;
     }
-
-    //public boolean getIsMorning()
-    //{
-    //    return isMorning;
-    //}
     
     /**
      * Return the display value (that is, the current value as a two-digit
@@ -67,11 +60,6 @@ public class NumberDisplay
             value = replacementValue;
         }
     }
-
-    //public void setIsMorning(boolean morning)
-    //{
-    //    isMorning = morning;
-    //}
     
     /**
      * Increment the display value by one, rolling over to zero if the
